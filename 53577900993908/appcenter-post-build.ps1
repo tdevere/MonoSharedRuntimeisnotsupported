@@ -5,7 +5,7 @@ Write-Information "The Post Build Script Start"
 $token = $env:AppCenterTokenForTest
 
 
-if (null -ne $token)
+if ($null -ne $token)
 {
     Write-Information "AppCenterTokenForTest token found in environment varible."
 
