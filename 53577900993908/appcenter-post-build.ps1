@@ -9,7 +9,7 @@ if ($null -ne $token)
 {
     Write-Host "AppCenterTokenForTest token found in environment varible."
 
-    appcenter login --token $AppCenterTokenForTest
+    appcenter login --token $token
 
     appcenter test generate uitest --platform android --output-path /Users/runner/work/1/a/GeneratedTest
 
