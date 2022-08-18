@@ -16,10 +16,11 @@ if ($null -ne $token)
     Write-Host "Seraching for all Project and Solutions in Generated Test project"
 
     [Collections.ArrayList] $csproj_file = Get-Content $TestUIProjectPath
+    $csproj_file
 
     Write-Host "List Prject File Before Update"
     
-    #$csproj_file.Insert(15,'    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>')
+    $csproj_file.Insert(15,'    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>')
     
     $csproj_file.Insert(26,'    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>')
     
