@@ -20,9 +20,12 @@ if ($null -ne $token)
 
     Write-Host "List Prject File Before Update"
     
-    $csproj_file.Insert(15,'    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>')
+    $csproj_file.Insert(15,'    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>')
+    $csproj_file.Insert(16,'    <AndroidUseAssemblyStore>false</AndroidUseAssemblyStore>')
     
-    $csproj_file.Insert(26,'    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>')
+    $csproj_file.Insert(26,'    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>')
+    $csproj_file.Insert(27,'    <AndroidUseAssemblyStore>false</AndroidUseAssemblyStore>')
+    
     
     $csproj_file | Set-Content $TestUIProjectPath
 
