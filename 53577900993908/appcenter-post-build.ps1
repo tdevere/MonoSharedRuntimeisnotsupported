@@ -51,4 +51,4 @@ Write-Host "The Post Build Script End"
 
 
 Write-Host "Dump environment varibles"
-[system.environment]::GetEnvironmentVariables()
+[system.environment]::GetEnvironmentVariables() | FT -Wrap
