@@ -16,7 +16,7 @@ if ($null -ne $token)
     Write-Host "Seraching for all Project and Solutions in Generated Test project"
 
     $csproj_file = Get-Content "/Users/runner/work/1/a/GeneratedTest/AppCenter.UITest.Android/AppCenter.UITest.Android.csproj"
-    $Write-Host "List Prject File Before Update"
+    Write-Host "List Prject File Before Update"
     $csproj_file
     
     #$csproj_file.Insert(15,'    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>')
