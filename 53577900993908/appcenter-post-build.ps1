@@ -1,3 +1,5 @@
+#!/usr/bin/env pwsh
+
 Write-Information "The Post Build Script Start"
 
 $token = $env:AppCenterTokenForTest
