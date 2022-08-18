@@ -1,33 +1,33 @@
 #!/usr/bin/env pwsh
 
-Write-Information "The Post Build Script Start"
+Write-Host "The Post Build Script Start"
 
 $token = $env:AppCenterTokenForTest
 
 
 if ($null -ne $token)
 {
-    Write-Information "AppCenterTokenForTest token found in environment varible."
+    Write-Host "AppCenterTokenForTest token found in environment varible."
 
     #appcenter login --token $AppCenterTokenForTest
 
     appcenter test generate uitest --platform android --output-path /Users/runner/work/1/a/GeneratedTest
 
-    Write-Information "Seraching for all Project and Solutions in Generated Test project"
+    Write-Host "Seraching for all Project and Solutions in Generated Test project"
 
     $csproj_files = Get-ChildItem /Users/runner/work/1/a/GeneratedTest -Filter AppCenter.UITest.Android.csproj
 
-    Write-Information "List Prject Files"
+    Write-Host "List Prject Files"
     $csproj_files
 
     foreach ($file in $csproj_files)
     {
         $f = Get-Content -Path $file.FullName -as [Collections.ArrayList]
-        Write-Information "Original Project File Content"
+        Write-Host "Original Project File Content"
         $f
         $f.Insert(15,'    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>') # Line 3 starting from 0
         $f | Set-Content file.txt
-        Write-Information "Updated Project File Content"
+        Write-Host "Updated Project File Content"
         $f
 
         
@@ -47,4 +47,4 @@ else
     Write-Error "AppCenterTokenForTest environment varible must be set for this script to execute."    
 }
 
-Write-Information "The Post Build Script End"
+Write-Host "The Post Build Script End"
