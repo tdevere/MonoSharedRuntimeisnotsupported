@@ -25,7 +25,7 @@ if ($null -ne $token)
     
     $csproj_file | Set-Content $TestUIProjectPath
 
-    $Write-Host "List Prject File After Update - AndroidUseSharedRuntime"
+    Write-Host "List Prject File After Update - AndroidUseSharedRuntime"
 
     $csproj_file
 
