@@ -15,23 +15,15 @@ if ($null -ne $token)
 
     Write-Host "Seraching for all Project and Solutions in Generated Test project"
 
-    $csproj_files = Get-ChildItem /Users/runner/work/1/a/GeneratedTest -Filter AppCenter.UITest.Android.csproj
+    $csproj_file = Get-Content "/Users/runner/work/1/a/GeneratedTest/AppCenter.UITest.Android/AppCenter.UITest.Android.csproj"
+    $Write-Host "List Prject File Before Update"
+    $csproj_file
+    
+    #$csproj_file.Insert(15,'    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>')
+    $csproj_file.Insert(26,'    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>')
 
-    Write-Host "List Prject Files"
-    $csproj_files
-
-    foreach ($file in $csproj_files)
-    {
-        $f = Get-Content -Path $file.FullName -as [Collections.ArrayList]
-        Write-Host "Original Project File Content"
-        $f
-        $f.Insert(15,'    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>') # Line 3 starting from 0
-        $f | Set-Content file.txt
-        Write-Host "Updated Project File Content"
-        $f
-
-        
-    }
+    $Write-Host "List Prject File After Update - AndroidUseSharedRuntime"
+    $csproj_file
 
     nuget restore -NonInteractive /Users/runner/work/1/a/GeneratedTest/AppCenter.UITest.Android.sln
 
