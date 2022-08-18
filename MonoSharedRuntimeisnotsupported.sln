@@ -5,6 +5,11 @@ VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "53577900993908", "53577900993908\53577900993908.csproj", "{3B275C45-2D58-4A5C-ABA4-DAB771A693FD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{21165C11-68FA-46E2-A6BC-A53DC0009752}"
+	ProjectSection(SolutionItems) = preProject
+		appcenter-post-build.ps1 = appcenter-post-build.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
