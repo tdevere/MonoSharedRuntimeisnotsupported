@@ -3,7 +3,7 @@
 Write-Host "The Post Build Script Start"
 
 $token = $env:AppCenterTokenForTest
-
+$TestUIProjectPath = "/Users/runner/work/1/a/GeneratedTest/AppCenter.UITest.Android/AppCenter.UITest.Android.csproj"
 
 if ($null -ne $token)
 {
@@ -15,14 +15,18 @@ if ($null -ne $token)
 
     Write-Host "Seraching for all Project and Solutions in Generated Test project"
 
-    $csproj_file = Get-Content "/Users/runner/work/1/a/GeneratedTest/AppCenter.UITest.Android/AppCenter.UITest.Android.csproj"
+    [Collections.ArrayList] $csproj_file = Get-Content $TestUIProjectPath
+
     Write-Host "List Prject File Before Update"
-    $csproj_file
     
     #$csproj_file.Insert(15,'    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>')
+    
     $csproj_file.Insert(26,'    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>')
+    
+    $csproj_file | Set-Content $TestUIProjectPath
 
     $Write-Host "List Prject File After Update - AndroidUseSharedRuntime"
+
     $csproj_file
 
     nuget restore -NonInteractive /Users/runner/work/1/a/GeneratedTest/AppCenter.UITest.Android.sln
@@ -36,7 +40,11 @@ if ($null -ne $token)
 }
 else
 {
-    Write-Error "AppCenterTokenForTest environment varible must be set for this script to execute."    
+    Write-Host "AppCenterTokenForTest environment varible must be set for this script to execute."    
 }
 
 Write-Host "The Post Build Script End"
+
+
+Write-Host "Dump environment varibles"
+[system.environment]::GetEnvironmentVariables()
